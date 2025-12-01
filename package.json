@@ -1,0 +1,16 @@
+{
+  "name": "sanity-christmas-2025",
+  "version": "1.0.0",
+  "description": "Sopra Steria Sanity Christmas calendar 2025",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.24.0",
+  "volta": {
+    "node": "24.11.1"
+  }
+}
