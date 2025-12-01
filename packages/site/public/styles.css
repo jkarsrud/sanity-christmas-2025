@@ -1,0 +1,33 @@
+:root {
+    --font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+}
+
+html,body {
+    font-family: var(--font-family);    
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-areas: 
+        'header'
+        'content'
+        'footer';
+    min-height: 100dvh;
+    gap: 1rem;
+    grid-template-rows: 2rem 1fr 4rem;
+    justify-items: center;
+
+    & header {
+        grid-area: header;
+    }
+
+    & main {
+        grid-area: content;
+        align-content: block-start;
+    }
+    & footer {
+        grid-area: footer
+    }
+}

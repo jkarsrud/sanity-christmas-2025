@@ -13,6 +13,7 @@
   "dependencies": {
     "@enhance/arc-plugin-enhance": "latest",
     "@enhance/arc-plugin-styles": "latest",
-    "@enhance/styles-cribsheet": "latest"
+    "@enhance/styles-cribsheet": "latest",
+    "@architect/architect": "12.0.0"
   }
 }
