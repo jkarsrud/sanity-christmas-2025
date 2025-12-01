@@ -5,6 +5,7 @@
     "start": "npx enhance dev"
   },
   "devDependencies": {
+    "@architect/architect": "12.0.0",
     "@enhance/cli": "latest",
     "@enhance/types": "latest",
     "prettier": "^3.7.3",
@@ -13,7 +14,6 @@
   "dependencies": {
     "@enhance/arc-plugin-enhance": "latest",
     "@enhance/arc-plugin-styles": "latest",
-    "@enhance/styles-cribsheet": "latest",
-    "@architect/architect": "12.0.0"
+    "@enhance/styles-cribsheet": "latest"
   }
 }
