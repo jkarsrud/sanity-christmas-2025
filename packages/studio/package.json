@@ -29,9 +29,9 @@
     "typescript": "^5.8"
   },
   "prettier": {
-    "semi": false,
+    "semi": true,
     "printWidth": 100,
-    "bracketSpacing": false,
-    "singleQuote": true
+    "singleQuote": true,
+    "trailingComma": "es5"
   }
 }

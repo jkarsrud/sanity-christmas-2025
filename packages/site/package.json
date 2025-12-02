@@ -15,5 +15,11 @@
     "@enhance/arc-plugin-enhance": "latest",
     "@enhance/arc-plugin-styles": "latest",
     "@enhance/styles-cribsheet": "latest"
+  },
+  "prettier": {
+    "semi": true,
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "es5"
   }
 }
