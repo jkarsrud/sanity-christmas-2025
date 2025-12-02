@@ -1,0 +1,17 @@
+erDiagram
+    Recipe ||--|{ Ingredient : contains
+
+    Recipe {
+    string Title
+    slug Slug
+    text Introduction
+    text Instructions 
+    }
+
+    Ingredient {
+    string Name
+    number Measure
+    string Unit
+    }
+    
+    
