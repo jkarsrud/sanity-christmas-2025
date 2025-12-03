@@ -51,6 +51,72 @@ const Ingredient = defineType({
   },
 });
 
+const Instruction = defineType({
+  type: 'object',
+  title: 'Instruction step',
+  name: 'instruction',
+  fields: [
+    defineField({
+      title: 'Body',
+      name: 'body',
+      type: 'array',
+      of: [{ type: 'block' }],
+    }),
+  ],
+});
+
+const Callout = defineType({
+  type: 'object',
+  title: 'Callout',
+  name: 'callout',
+  fields: [
+    defineField({
+      title: 'Level',
+      name: 'level',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Info', value: 'info' },
+          { title: 'Warning', value: 'warning' },
+        ],
+      },
+    }),
+    defineField({
+      title: 'Body',
+      name: 'body',
+      type: 'array',
+      of: [{ type: 'block' }],
+    }),
+  ],
+  preview: {
+    select: {
+      level: 'level',
+      body: 'body',
+    },
+    prepare: ({ level }) => {
+      return {
+        title: `Content block`,
+        subtitle: level,
+      };
+    },
+  },
+});
+
+const Category = defineType({
+  type: 'document',
+  title: 'Category',
+  name: 'category',
+  fields: [
+    defineField({ title: 'Name', name: 'name', type: 'string' }),
+    defineField({
+      title: 'Description',
+      name: 'description',
+      type: 'array',
+      of: [{ type: 'block' }],
+    }),
+  ],
+});
+
 const Recipe = defineType({
   title: 'Recipe',
   name: 'recipe',
@@ -70,10 +136,10 @@ const Recipe = defineType({
       },
     }),
     defineField({
-      title: 'Ingredients',
-      name: 'ingredients',
+      title: 'Categories',
+      name: 'categories',
       type: 'array',
-      of: [{ type: 'ingredient' }],
+      of: [{ type: 'reference', to: [{ type: 'category' }] }],
     }),
     defineField({
       title: 'Introduction',
@@ -82,12 +148,19 @@ const Recipe = defineType({
       of: [{ type: 'block' }],
     }),
     defineField({
+      title: 'Ingredients',
+      name: 'ingredients',
+      type: 'array',
+      of: [{ type: 'ingredient' }],
+    }),
+
+    defineField({
       title: 'Instructions',
       name: 'instructions',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [{ type: 'block' }, { type: 'instruction' }, { type: 'callout' }],
     }),
   ],
 });
 
-export const schemaTypes = [Recipe, Ingredient];
+export const schemaTypes = [Recipe, Ingredient, Instruction, Callout, Category];

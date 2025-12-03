@@ -2,36 +2,34 @@ export default function Nav({ html }) {
   return html`
     <style>
       :host {
-        --nav-item-shadow: 8px 8px 16px #cccccc, -8px -8px 16px #f4f4f4;
-        --nav-item-shadow-hover: -8px -8px 16px #cccccc, 8px 8px 16px #f4f4f4;
-
         border-radius: 1rem;
-
         display: block;
-        padding: 1rem;
-        box-shadow: var(--nav-item-shadow);
-        background: #e0e0e0;
-        border-radius: 5px;
+        padding: 1rem 2rem;
+        box-shadow: var(--shadow-neu-s);
+        background: var(--bg);
+        border-radius: 0.5rem;
       }
+
       ul {
         list-style: none;
         display: flex;
-        gap: 1rem;
+        gap: 2rem;
         margin: 0;
         padding: 0;
       }
+
       ul a {
         color: inherit;
-        font-weight: 600;
-        background: #e0e0e0;
-        border-radius: 5px;
+        font-weight: 700;
+        text-shadow: var(--shadow-neu-s);
         text-decoration: none;
-        padding: 0.5rem 1rem;
-        transition: text-decoration;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.25s ease;
       }
 
       ul a:hover {
-        text-decoration: underline;
+        text-decoration: none;
+        border-color: currentColor;
       }
     </style>
     <nav>

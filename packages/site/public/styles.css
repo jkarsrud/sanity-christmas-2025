@@ -1,18 +1,44 @@
 :root {
-  --font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  --ff-serif: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+  --ff-sans: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+
+  --royal-violet: hsla(264, 71%, 47%, 1);
+  --cornflower-blue: hsla(224, 74%, 69%, 1);
 
   --bg: #e0e0e0;
+
+  --button-bg: var(--dust-grey);
+  --button-primary-bg: var(--royal-violet);
+
+  /* shadows */
+  --shadow-neu-hl: #f4f4f4;
+  --shadow-neu-ds: #ccc;
+
+  --shadow-neu-s: 8px 8px 16px var(--shadow-neu-ds), -8px -8px 16px var(--shadow-neu-hl);
+  --shadow-neu-m: 16px 16x 32px var(--shadow-neu-ds), -16px -16px 32px var(--shadow-neu-hl);
+
+  /* layout */
+  --max-width: 96ch;
 }
 
 html,
 body {
-  font-family: var(--font-family);
+  font-family: var(--ff-sans);
   margin: 0;
   padding: 0;
 }
 
 body {
   background: var(--bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ff-sans);
 }
 
 sc-site-layout {
@@ -24,20 +50,29 @@ sc-site-layout {
   min-height: 100dvh;
   gap: 2rem;
   grid-template-rows: auto 1fr auto;
-  justify-items: center;
+  justify-items: stretch;
   align-items: start;
+  max-inline-size: var(--max-width);
+  margin: 0 auto;
 
-  & header {
+  & > header {
     grid-area: header;
     padding: 1rem;
   }
 
-  & main {
+  & > main {
     grid-area: content;
     padding-inline: 1rem;
-    max-inline-size: 70ch;
   }
-  & footer {
+  & > footer {
     grid-area: footer;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
   }
 }
