@@ -8,6 +8,8 @@ const IngredientUnits: Record<string, string> = {
   mg: 'mg',
   g: 'g',
   kg: 'kg',
+  ts: 'ts',
+  ss: 'ss',
 };
 
 const Ingredient = defineType({
