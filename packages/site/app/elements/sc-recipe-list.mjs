@@ -12,9 +12,6 @@ export default function SCRecipeList({ html, state: { store } }) {
 
       return `
         <h2><a href="${url}">${recipe.title}</a></h2>
-        <time datetime="${recipe._createdAt}">
-          ${new Date(recipe._createdAt).toLocaleDateString()}
-        </time>
         ${introductionHtml}
       `;
     })
