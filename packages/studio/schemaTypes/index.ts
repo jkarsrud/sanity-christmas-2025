@@ -95,14 +95,8 @@ const Callout = defineType({
   ],
   preview: {
     select: {
-      level: 'level',
-      body: 'body',
-    },
-    prepare: ({ level }) => {
-      return {
-        title: `Content block`,
-        subtitle: level,
-      };
+      title: 'body',
+      subtitle: 'level',
     },
   },
 });
