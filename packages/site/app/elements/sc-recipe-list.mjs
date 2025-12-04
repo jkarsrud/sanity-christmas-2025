@@ -1,4 +1,5 @@
 import { toHTML } from '@portabletext/to-html';
+import { urlFor } from '../sanityImageUrl.mjs';
 
 export default function SCRecipeList({ html, state: { store } }) {
   const { recipes = [] } = store;
@@ -17,7 +18,22 @@ export default function SCRecipeList({ html, state: { store } }) {
       .card {
         box-shadow: var(--shadow-neu-s);
         border-radius: 1rem;
-        padding: 20px;
+        overflow: hidden;
+      }
+
+      .card header img {
+        width: 100%;
+        height: 100%;
+        object-fit: fit;
+      }
+
+      .card header h2 {
+        margin-block-start: 1rem;
+        margin-inline: 1rem;
+      }
+
+      .card article {
+        padding-inline: 1rem;
       }
 
       @media (width >= 500px) {
@@ -37,17 +53,22 @@ export default function SCRecipeList({ html, state: { store } }) {
       ${recipes
         .map((recipe) => {
           const introductionHtml = toHTML(recipe.introduction);
-          const url = `recipes/${recipe.slug.current}`;
+          const url = `/recipes/${recipe.slug.current}`;
 
           return `
-        <section class="card">
-          <header>
-          <picture></picture>
-            <h2><a href="${url}">${recipe.title}</a></h2>
-          </header>
-          <article>${introductionHtml}</article>
-        </section>
-      `;
+            <section class="card">
+              <header>
+                <a href="${url}"
+                  ><img
+                    src="${urlFor(recipe.poster).width(300).height(300).url()}"
+                    alt="${recipe.poster.caption}"
+                  />
+                  <h2>${recipe.title}</h2></a
+                >
+              </header>
+              <article>${introductionHtml}</article>
+            </section>
+          `;
         })
         .join('')}
     </div>
