@@ -17,6 +17,7 @@
     "@enhance/styles-cribsheet": "latest",
     "@portabletext/to-html": "^4.0.1",
     "@sanity/client": "^7.13.1",
+    "@sanity/image-url": "^2.0.2",
     "groq": "^4.19.0"
   },
   "prettier": {
