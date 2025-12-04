@@ -122,8 +122,8 @@ export default function RecipeElement({ html, state: { store } }) {
         </div>
         <div>
           <img
-            src="${urlFor(recipe.poster).width(800).url()}"
-            srcset=${posterSrcSet}
+            src="${urlFor(recipe.poster).width(600).url()}"
+            srcset="${posterSrcSet}"
             sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
             alt="${recipe.poster.caption}"
           />
