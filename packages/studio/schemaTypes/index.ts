@@ -147,6 +147,27 @@ const Recipe = defineType({
       of: [{ type: 'reference', to: [{ type: 'category' }] }],
     }),
     defineField({
+      type: 'image',
+      title: 'Poster Image',
+      name: 'poster',
+      fields: [
+        defineField({
+          name: 'caption',
+          type: 'string',
+        }),
+      ],
+      options: {
+        hotspot: {
+          previews: [
+            { title: '2:1', aspectRatio: 2 / 1 },
+            { title: '4:5', aspectRatio: 4 / 5 },
+            { title: '9:16', aspectRatio: 9 / 16 },
+            { title: '16:9', aspectRatio: 16 / 9 },
+          ],
+        },
+      },
+    }),
+    defineField({
       title: 'Introduction',
       name: 'introduction',
       type: 'array',
@@ -158,7 +179,6 @@ const Recipe = defineType({
       type: 'array',
       of: [{ type: 'ingredient' }],
     }),
-
     defineField({
       title: 'Instructions',
       name: 'instructions',
