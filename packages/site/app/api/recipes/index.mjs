@@ -11,11 +11,9 @@ export async function get(req) {
     token: process.env.SANITY_API_TOKEN,
   });
 
-  const query = groq`
-  *[_type=="recipe"] | order(_createdAt desc)[0...5]
-`;
+  const latestRecipesQuery = groq`*[_type=="recipe"]{_id, _createdAt, title, slug, introduction} | order(_createdAt desc)[0...5]`;
 
-  const recipes = await sanityClient.fetch(query);
+  const recipes = await sanityClient.fetch(latestRecipesQuery);
 
   return {
     json: { recipes },

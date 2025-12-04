@@ -11,11 +11,9 @@ export async function get(req) {
     token: process.env.SANITY_API_TOKEN,
   });
 
-  const query = groq`
-  *[_type=="recipe" && slug.current == $slug][0]
-`;
+  const currentRecipeQuery = groq`*[_type=="recipe" && slug.current == $slug][0]`;
 
-  const recipe = await sanityClient.fetch(query, req.params);
+  const recipe = await sanityClient.fetch(currentRecipeQuery, req.params);
 
   console.log(recipe);
 
