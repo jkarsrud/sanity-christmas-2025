@@ -38,6 +38,11 @@ const Ingredient = defineType({
         })),
       },
     }),
+    defineField({
+      type: 'string',
+      title: 'Category',
+      name: 'category',
+    }),
   ],
   preview: {
     select: {
