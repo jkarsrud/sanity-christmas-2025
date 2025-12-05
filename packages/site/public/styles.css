@@ -12,10 +12,13 @@
   --button-primary-bg: var(--royal-violet);
 
   /* shadows */
-  --shadow-neu-hl: #f4f4f4;
-  --shadow-neu-ds: #ccc;
+  --shadow-neu-hl: hsla(0 0% 96% / 1);
+  --shadow-neu-ds: hsla(0 0% 80% / 1);
 
   --shadow-neu-s: 8px 8px 16px var(--shadow-neu-ds), -8px -8px 16px var(--shadow-neu-hl);
+  --inner-shadow-neu-s:
+    inset 4px 4px 8px hsla(from var(--shadow-neu-ds) h s l / 0.5),
+    inset -4px -4px 8px hsla(from var(--shadow-neu-hl) h s l / 0.5);
   --shadow-neu-m: 16px 16x 32px var(--shadow-neu-ds), -16px -16px 32px var(--shadow-neu-hl);
 
   /* layout */
