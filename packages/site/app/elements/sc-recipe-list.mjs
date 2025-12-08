@@ -2,12 +2,20 @@ import { toHTML } from '@portabletext/to-html';
 import { urlFor } from '../sanityImageUrl.mjs';
 
 export default function SCRecipeList({ html, state: { store } }) {
-  const { recipes = [] } = store;
+  const { pageModel } = store;
+  const { recipes } = pageModel;
+
+  console.log({ store });
 
   return html`
     <style>
       h2 {
         margin-top: 0;
+      }
+
+      .categories {
+        display: block;
+        margin-block: 2rem;
       }
 
       .recipes {
@@ -49,6 +57,7 @@ export default function SCRecipeList({ html, state: { store } }) {
       }
     </style>
     <h1>Recipes</h1>
+    <sc-categories class="categories"></sc-categories>
     <div class="recipes">
       ${recipes
         .map((recipe) => {

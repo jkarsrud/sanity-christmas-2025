@@ -39,7 +39,7 @@ export default function RecipeElement({ html, state: { store } }) {
       }
 
       header div:first-child {
-        padding: 2rem 4rem;
+        padding: 1rem 2rem;
       }
       header div:has(img) img {
         width: 100%;
@@ -113,12 +113,30 @@ export default function RecipeElement({ html, state: { store } }) {
       .instruction :checked + * {
         text-decoration: line-through;
       }
+
+      .categories {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 1rem;
+      }
+
+      .category {
+        display: block;
+        border-radius: 0.5rem;
+        box-shadow: var(--shadow-neu-s);
+        padding: 0.5rem 1rem;
+      }
     </style>
     <article>
       <header>
         <div>
           <h1>${recipe.title}</h1>
           ${introductionHtml}
+          <ul class="categories">
+            ${recipe.categories.map((x) => `<li class="category">${x}</li>`).join('')}
+          </ul>
         </div>
         <div>
           <img

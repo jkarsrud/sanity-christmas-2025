@@ -15,6 +15,8 @@
   --shadow-neu-hl: hsla(0 0% 96% / 1);
   --shadow-neu-ds: hsla(0 0% 80% / 1);
 
+  --shadow-neu-s-inset:
+    inset 8px 8px 16px var(--shadow-neu-ds), inset -8px -8px 16px var(--shadow-neu-hl);
   --shadow-neu-s: 8px 8px 16px var(--shadow-neu-ds), -8px -8px 16px var(--shadow-neu-hl);
   --inner-shadow-neu-s:
     inset 4px 4px 8px hsla(from var(--shadow-neu-ds) h s l / 0.5),
