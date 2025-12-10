@@ -44,6 +44,17 @@ export default function SCRecipeList({ html, state: { store } }) {
         padding-inline: 1rem;
       }
 
+      sc-form-filter {
+        display: block;
+        margin-block-end: 1rem;
+      }
+
+      sc-form-filter form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
       @media (width >= 500px) {
         .recipes {
           grid-template-columns: 1fr 1fr;
@@ -57,7 +68,7 @@ export default function SCRecipeList({ html, state: { store } }) {
       }
     </style>
     <h1>Recipes</h1>
-    <sc-categories class="categories"></sc-categories>
+    <sc-form-filter aria-label="Categories and sorting"></sc-form-filter>
     <div class="recipes">
       ${recipes
         .map((recipe) => {

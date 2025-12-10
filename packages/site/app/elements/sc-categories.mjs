@@ -7,33 +7,45 @@ export default function SCCategories({ html, state: { store } }) {
       :host {
         margin: 0;
       }
-      ul {
-        list-style: none;
+
+      fieldset {
         display: flex;
         gap: 1rem;
         margin: 0;
         padding: 0;
+        border: none;
       }
 
-      a {
+      label {
         display: block;
         padding: 0.5rem 1rem;
         border-radius: 5px;
         box-shadow: var(--shadow-neu-s);
       }
-      a.selected {
+
+      input[type='radio'] {
+        display: none;
+      }
+
+      label:has(:checked) {
         box-shadow: var(--shadow-neu-s-inset);
       }
     </style>
-    <ul>
+    <fieldset>
       ${categories
         .map(
           (x) =>
-            `<li>
-              <a href="?category=${x.name}" class="${pageModel.selectedCategory === x.name ? 'selected' : ''}">${x.name}</a>
-            </li>`
+            `<label>
+              <input
+                type="radio"
+                name="category"
+                value="${x.name}"
+                ${pageModel.selectedCategory === x.name ? 'checked' : ''}
+              />
+              ${x.name}
+            </label>`
         )
         .join('')}
-    </ul>
+    </fieldset>
   `;
 }
