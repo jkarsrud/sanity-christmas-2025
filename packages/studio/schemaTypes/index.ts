@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { DocumentIcon } from '@sanity/icons';
 
 const IngredientUnits: Record<string, string> = {
   ml: 'ml',
@@ -116,10 +117,18 @@ const Category = defineType({
   ],
 });
 
+const Duration = defineType({
+  type: 'object',
+  title: 'Duration',
+  name: 'duration',
+  fields: [defineField({ name: 'value', type: 'number' })],
+});
+
 const Recipe = defineType({
   title: 'Recipe',
   name: 'recipe',
   type: 'document',
+  icon: DocumentIcon,
   fields: [
     defineField({
       title: 'Title',
@@ -139,6 +148,11 @@ const Recipe = defineType({
       name: 'categories',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'category' }] }],
+    }),
+    defineField({
+      title: 'Duration',
+      name: 'duration',
+      type: 'duration',
     }),
     defineField({
       type: 'image',
@@ -182,4 +196,4 @@ const Recipe = defineType({
   ],
 });
 
-export const schemaTypes = [Recipe, Ingredient, Instruction, Callout, Category];
+export const schemaTypes = [Recipe, Ingredient, Instruction, Callout, Category, Duration];

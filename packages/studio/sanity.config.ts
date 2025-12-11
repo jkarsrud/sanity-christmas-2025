@@ -1,7 +1,12 @@
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemaTypes'
+import { defineConfig } from 'sanity';
+import { StructureBuilder, structureTool, StructureToolOptions } from 'sanity/structure';
+import { visionTool } from '@sanity/vision';
+import { schemaTypes } from './schemaTypes';
+
+const structure = (S: StructureBuilder) =>
+  S.list()
+    .title('Recipes')
+    .items([...S.documentTypeListItems().reverse()]);
 
 export default defineConfig({
   name: 'default',
@@ -10,9 +15,14 @@ export default defineConfig({
   projectId: '9zx6lchr',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool()],
+  plugins: [
+    structureTool({
+      structure,
+    }),
+    visionTool(),
+  ],
 
   schema: {
     types: schemaTypes,
   },
-})
+});

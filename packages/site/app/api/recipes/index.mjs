@@ -17,6 +17,7 @@ export async function get(req) {
     slug,
     introduction,
     poster
+    duration,
   }[0...5] | order(${sortField} ${sortOrder}),
   "categories": *[_type == "category"]{name, _id, _type}
 }`;
