@@ -8,6 +8,10 @@ const structure = (S: StructureBuilder) =>
     .title('Recipe website')
     .items([
       S.listItem()
+        .title('Front page')
+        .icon('house')
+        .child(S.document().schemaType('page').documentId('694eeb71-da6f-49e3-9d10-31692b5980d2')),
+      S.listItem()
         .title('Recipes')
         .child(
           S.documentTypeList('category')
@@ -22,8 +26,7 @@ const structure = (S: StructureBuilder) =>
             )
         ),
       S.divider().title('All document types'),
-      S.documentTypeListItem('category'),
-      S.documentTypeListItem('recipe'),
+      ...S.documentTypeListItems(),
     ]);
 
 export default defineConfig({
