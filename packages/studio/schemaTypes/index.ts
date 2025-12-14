@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity';
 import { DocumentIcon } from '@sanity/icons';
+import DurationDisplay from '../components/duration-display';
 
 const IngredientUnits: Record<string, string> = {
   ml: 'ml',
@@ -154,6 +155,9 @@ const Recipe = defineType({
 
           return 'Duration does not match ISO 8601 duration';
         }),
+      components: {
+        input: DurationDisplay,
+      },
     }),
     defineField({
       type: 'image',
