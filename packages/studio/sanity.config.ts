@@ -5,8 +5,26 @@ import { schemaTypes } from './schemaTypes';
 
 const structure = (S: StructureBuilder) =>
   S.list()
-    .title('Recipes')
-    .items([...S.documentTypeListItems().reverse()]);
+    .title('Recipe website')
+    .items([
+      S.listItem()
+        .title('Recipes')
+        .child(
+          S.documentTypeList('category')
+            .title('Recipes by category')
+            .child((categoryId) =>
+              S.documentList()
+                .title('Recipes')
+                .filter(
+                  '_type == "recipe" && select(defined($categoryId) => $categoryId in categories[]->_id, true)'
+                )
+                .params({ categoryId })
+            )
+        ),
+      S.divider().title('All document types'),
+      S.documentTypeListItem('category'),
+      S.documentTypeListItem('recipe'),
+    ]);
 
 export default defineConfig({
   name: 'default',
