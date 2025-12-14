@@ -117,12 +117,7 @@ const Category = defineType({
   ],
 });
 
-const Duration = defineType({
-  type: 'object',
-  title: 'Duration',
-  name: 'duration',
-  fields: [defineField({ name: 'value', type: 'number' })],
-});
+const iso8601TimeDurationRegex = /^PT(?:[0-9]+H)?(?:[0-9]+M)?(?:[0-9]+(\.[0-9]+)?S)?$/;
 
 const Recipe = defineType({
   title: 'Recipe',
@@ -152,7 +147,13 @@ const Recipe = defineType({
     defineField({
       title: 'Duration',
       name: 'duration',
-      type: 'duration',
+      type: 'string',
+      validation: (rule) =>
+        rule.required().custom((val) => {
+          if (val == null || iso8601TimeDurationRegex.test(val)) return true;
+
+          return 'Duration does not match ISO 8601 duration';
+        }),
     }),
     defineField({
       type: 'image',
@@ -196,4 +197,4 @@ const Recipe = defineType({
   ],
 });
 
-export const schemaTypes = [Recipe, Ingredient, Instruction, Callout, Category, Duration];
+export const schemaTypes = [Recipe, Ingredient, Instruction, Callout, Category];
